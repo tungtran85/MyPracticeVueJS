@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<div class="jumbotron">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <h1>test</h1>
+    <div id="app">
+        <p>{{message}}</p>
+    </div>
+    ---------------------------
+    <div id="app-1">
+        <span v-bind:title="message">
+            This my message
+        </span>
+    </div>
+    --------------------------------
+    <div id="app-2">
+        <p v-if="vsee">
+            Now you see me!
+        </p>
+    </div>
+    -----------------------------
+    <div id="app-3">
+        <ol>
+            <li v-for="todo in todos">
+                {{todo.text}}
+            </li>
+        </ol>
+    </div>
+    --------------------------------
+    <div id="app-4">
+        <p>{{message}}</p>
+        <button v-on:click="reseverMessage">resever message</button>
+    </div>
+    ----------------------------------------------
+    <div id="app-6">
+        <p>{{message}}</p>
+        <input v-model="message" />
+    </div>
+</div>
+
+<script>
+    var v6 = new Vue({
+        el: '#app-6',
+        data: {
+            message:'hello vuejs!'
+        }
+    });
+    //-----------------------
+    var v4 = new Vue({
+        el: '#app-4',
+        data: {
+            message:'Hello Vue.js'
+        },
+        methods: {
+            reseverMessage: function () {
+                this.message = this.message.split('').reverse().join('');
+            }
+        }
+    });
+    //----------------------
+    var v3 = new Vue({
+        el: '#app-3',
+        data: {
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue' },
+                { text: 'Build something awesome' }
+            ]
+        }
+    });
+    //----------------------
+    var v2 = new Vue({
+        el: '#app-2',
+        data: {
+            vsee: false
+        }
+    });
+    //-------------------------
+    var v1 = new Vue({
+        el: '#app-1',
+        data: {
+            message: 'You loaded this page on ' + new Date()
+        }
+    });
+    //--------------------------
+    var v0 = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello world ^_^'
+        }
+    });
+
+</script>
